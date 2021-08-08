@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-
+import 'Animacao.dart';
 import 'package:flutter/cupertino.dart';
 
 class Home extends StatefulWidget {
@@ -32,6 +32,12 @@ class _HomeState extends State<Home> {
     });
   }
 
+  _proximaPagina() {
+    // Navigator.push(context,
+    //     MaterialPageRoute(builder: (BuildContext context) => Animacao()));
+    Navigator.pushNamed(context, 'a/');
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,31 +46,37 @@ class _HomeState extends State<Home> {
         backgroundColor: Colors.blue,
       ),
       body: Container(
-          padding: EdgeInsets.all(40),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: <Widget>[
-              TextField(
-                keyboardType: TextInputType.number,
-                decoration: InputDecoration(
-                  labelText: "Digite o Cep ex: 79290000",
-                ),
+        padding: EdgeInsets.all(40),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: <Widget>[
+            TextField(
+              keyboardType: TextInputType.number,
+              decoration: InputDecoration(
+                labelText: "Digite o Cep ex: 79290000",
+              ),
+              style: TextStyle(fontSize: 15),
+              controller: txtcep,
+            ),
+            Text(
+              "Resultado: ${resultado}",
+              style: TextStyle(fontSize: 25),
+            ),
+            ElevatedButton(
+              child: Text(
+                "Consultar",
                 style: TextStyle(fontSize: 15),
-                controller: txtcep,
               ),
-              Text(
-                "Resultado: ${resultado}",
-                style: TextStyle(fontSize: 25),
-              ),
-              ElevatedButton(
-                child: Text(
-                  "Consultar",
-                  style: TextStyle(fontSize: 15),
-                ),
-                onPressed: _consultaCep,
-              ),
-            ],
-          )),
+              onPressed: _consultaCep,
+            ),
+            FloatingActionButton(
+              onPressed: _proximaPagina,
+              tooltip: 'Avançar',
+              child: Icon(Icons.beach_access),
+            )
+          ],
+        ),
+      ),
     );
   }
 }
