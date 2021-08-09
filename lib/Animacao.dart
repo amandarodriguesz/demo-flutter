@@ -25,21 +25,27 @@ class _AnimacaoState extends State<Animacao> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Animações com Flutter"),
-        backgroundColor: Colors.red,
-      ),
-      body: Center(
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+        appBar: AppBar(
+          title: Text("Animações com Flutter"),
+          backgroundColor: Colors.blue,
+        ),
+        body: Center(
           child: AnimatedContainer(
               duration: Duration(seconds: 2),
               width: tamanho,
               height: tamanho,
-              color: cor)),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _ativarAnimacao,
-        tooltip: 'Trocar',
-        child: Icon(Icons.beach_access),
-      ),
-    );
+              color: cor),
+        ),
+        floatingActionButton: SizedBox(
+          height: 100,
+          width: 100,
+          child: FloatingActionButton(
+            onPressed: _ativarAnimacao,
+            tooltip: 'Trocar',
+            child: Icon(Icons.play_arrow),
+            shape: BeveledRectangleBorder(borderRadius: BorderRadius.zero),
+          ),
+        ));
   }
 }

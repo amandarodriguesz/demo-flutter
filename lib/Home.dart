@@ -41,6 +41,7 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButtonLocation: FloatingActionButtonLocation.miniEndFloat,
       appBar: AppBar(
         title: Text("Consultando um CEP via API"),
         backgroundColor: Colors.blue,
@@ -72,7 +73,7 @@ class _HomeState extends State<Home> {
             FloatingActionButton(
               onPressed: _proximaPagina,
               tooltip: 'Avançar',
-              child: Icon(Icons.beach_access),
+              child: Icon(Icons.arrow_forward),
             )
           ],
         ),
